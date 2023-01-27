@@ -1,0 +1,8 @@
+#main-bg {
+    height: 700px;
+    width: 900px;
+}
+
+body {
+    background-image: url(./images/rajola.png);
+}

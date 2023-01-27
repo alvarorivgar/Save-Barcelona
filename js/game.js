@@ -4,6 +4,7 @@ class Game {
         this.bg = new Image()
         this.bg.src = "/images/map-parallel.png"
         this.isGameOver = false;
+        this.colau = new Colau();
     }
 
 
@@ -15,24 +16,16 @@ class Game {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
 
-
-
-
-
-
-
-
-
-
-
     gameLoop = () => {
         
         // limpiar canvas
         this.clearCanvas()
         // movimientos y acciones
-        this.drawBg();
-
+        
+        
         // dibujado de elementos
+        this.drawBg();
+        this.colau.drawColau();
 
         // recursion y control
 

@@ -1,6 +1,11 @@
 class Vehicle {
 
-    constructor() {
+    constructor(){
+        this.x
+        this.y
+        this.h
+        this.w
+        this.speed
         
     }
 }

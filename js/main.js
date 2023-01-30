@@ -27,11 +27,11 @@ startBtnDOM.addEventListener("click", startGame);
 window.addEventListener("keydown", (event) => {
   if (event.code === "ArrowUp") {
     game.colau.moveColauUp();
-  } else if (event.code === "ArrowRight") {
+  } else if (event.code === "ArrowRight" && canvas.width - (game.colau.x + game.colau.w) > game.colau.horizontalSpeed) {
     game.colau.moveColauRight();
-  } else if (event.code === "ArrowDown") {
+  } else if (event.code === "ArrowDown" && canvas.height - (game.colau.y + game.colau.h) > game.colau.verticalSpeed) {
     game.colau.moveColauDown();
-  } else if (event.code === "ArrowLeft") {
+  } else if (event.code === "ArrowLeft" && 0 + game.colau.x > game.colau.horizontalSpeed) {
     game.colau.moveColauLeft();
   }
 });

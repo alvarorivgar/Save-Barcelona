@@ -6,3 +6,17 @@
 body {
     background-image: url(./images/rajola.png);
 }
+
+#gameover-screen {
+    display: none;
+  }
+
+
+#win-screen {
+    display: none;
+}
+
+#win-screen img {
+    width: 1300;
+    height: 900;
+}

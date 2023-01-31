@@ -3,6 +3,7 @@
 const startBtnDOM = document.querySelector("#start-btn");
 const mainMenuDOM = document.querySelector("#main-menu");
 const gameOverScreenDOM = document.querySelector("#gameover-screen");
+const winScreenDOM = document.querySelector("#win-screen")
 const canvas = document.querySelector("#canvas");
 const ctx = canvas.getContext("2d");
 let game;
@@ -25,13 +26,16 @@ const startGame = () => {
 
 startBtnDOM.addEventListener("click", startGame);
 window.addEventListener("keydown", (event) => {
-  if (event.code === "ArrowUp") {
+  if (event.code === "ArrowUp" && (game.colau.y > 50 || game.colau.x > 218 && game.colau.x < 390 || game.colau.x > 570 && game.colau.x < 760 || game.colau.x > 935 && game.colau.x < 1050)) {
     game.colau.moveColauUp();
-  } else if (event.code === "ArrowRight" && canvas.width - (game.colau.x + game.colau.w) > game.colau.horizontalSpeed) {
+  }
+  if (event.code === "ArrowRight" && canvas.width - (game.colau.x + game.colau.w) > game.colau.horizontalSpeed) {
     game.colau.moveColauRight();
-  } else if (event.code === "ArrowDown" && canvas.height - (game.colau.y + game.colau.h) > game.colau.verticalSpeed) {
+  }
+  if (event.code === "ArrowDown" && canvas.height - (game.colau.y + game.colau.h) > game.colau.verticalSpeed) {
     game.colau.moveColauDown();
-  } else if (event.code === "ArrowLeft" && 0 + game.colau.x > game.colau.horizontalSpeed) {
+  }
+  if (event.code === "ArrowLeft" && 0 + game.colau.x > game.colau.horizontalSpeed) {
     game.colau.moveColauLeft();
   }
 });

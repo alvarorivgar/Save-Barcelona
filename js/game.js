@@ -1,10 +1,11 @@
 class Game {
   constructor() {
     this.bg = new Image();
-    this.bg.src = "/images/map-parallel.png";
-    this.isGameOver = false;
+    this.bg.src = "/images/map-parallel-copia.png";
     this.colau = new Colau();
     this.vehicleArr = [];
+    this.isGameOver = false;
+    this.hasWon = false;
     this.frames = 1;
   }
 
@@ -17,30 +18,30 @@ class Game {
   };
 
   spawnVehicles = () => {
-    if (this.vehicleArr.length === 0 || this.frames % 60 === 0) {
-    // let randomSpawn = Math.floor(Math.random() * 10);
-    //   if (this.frames % randomSpawn === 0) {
-    // Green Car
-    let greenCarTop = new Vehicle(-100, 50, 90, 140, "greenCar", 6);
-    let greenCarBot = new Vehicle(-100, 675, 90, 140, "greenCar", 6);
-    // White Car
-    let whiteCarTop = new Vehicle(canvas.width, 165, 100, 155, "whiteCar", 4);
-    let whiteCarBot = new Vehicle(canvas.width, 575, 100, 155, "whiteCar", 4);
-    // Truck
-    let truckTop = new Vehicle(-200, 250, 200, 155, "truck", 2);
-    let truckBot = new Vehicle(-200, 460, 200, 155, "truck", 2);
-    // Biker
-    let bike = new Vehicle(canvas.width, 407, 90, 55, "bike", 3);
-    this.vehicleArr.push(
-      greenCarTop,
-      greenCarBot,
-      whiteCarTop,
-      whiteCarBot,
-      truckTop,
-      truckBot,
-      bike
-    );
-    //   }
+    if (this.vehicleArr.length === 0 || this.frames % 120 === 0) {
+      // let randomSpawn = Math.floor(Math.random() * 10);
+      //   if (this.frames % randomSpawn === 0) {
+      // Green Car
+      let greenCarTop = new Vehicle(-110, 90, 110, 60, "greenCar", 7);
+      let greenCarBot = new Vehicle(-110, 705, 110, 60, "greenCar", 6);
+      // White Car
+      let whiteCarTop = new Vehicle(canvas.width, 185, 110, 60, "whiteCar", 5);
+      let whiteCarBot = new Vehicle(canvas.width, 595, 110, 60, "whiteCar", 4);
+      // Truck
+      let truckTop = new Vehicle(-200, 270, 180, 80, "truck", 4);
+      let truckBot = new Vehicle(-200, 480, 180, 80, "truck", 8);
+      // Biker
+      let bike = new Vehicle(canvas.width, 395, 75, 75, "bike", 3);
+      this.vehicleArr.push(
+        greenCarTop,
+        greenCarBot,
+        whiteCarTop,
+        whiteCarBot,
+        truckTop,
+        truckBot,
+        bike
+      );
+      //   }
     }
   };
 
@@ -55,17 +56,38 @@ class Game {
 
   vehicleColission = () => {
     this.vehicleArr.forEach((vehicle) => {
-    if (
+      if (
         vehicle.x < this.colau.x + this.colau.w &&
         vehicle.x + vehicle.w > this.colau.x &&
         vehicle.y < this.colau.y + this.colau.h &&
-        vehicle.h + vehicle.y > this.colau.y
+        vehicle.h + vehicle.y > this.colau.y &&
+        vehicle.vehicleType !== "bike"
       ) {
-        console.log("colision");
-        // this.gameOver();
+        this.gameOver();
+      } else if (
+        vehicle.x < this.colau.x + this.colau.w && // Bikes push Ada downward and don't end the game
+        vehicle.x + vehicle.w > this.colau.x &&
+        vehicle.y < this.colau.y + this.colau.h &&
+        vehicle.h + vehicle.y > this.colau.y &&
+        vehicle.vehicleType === "bike"
+      ) {
+        this.colau.y += this.colau.verticalSpeed;
       }
     });
-    
+  };
+
+  gameOver = () => {
+    this.isGameOver = true;
+    canvas.style.display = "none";
+    gameOverScreenDOM.style.display = "block";
+  };
+
+  win = () => {
+    if(this.colau.y < 50){
+      this.hasWon = true;
+      canvas.style.display = "none";
+      winScreenDOM.style.display = "block";
+    }
   };
 
   gameLoop = () => {
@@ -86,6 +108,7 @@ class Game {
     });
     this.removeVehicles();
     this.vehicleColission();
+    this.win();
 
     // Element drawing
     this.drawBg();

@@ -1,6 +1,6 @@
 class Colau {
   constructor() {
-    this.x = 640;
+    this.x = 100;
     this.y = 785;
     this.h = 110;
     this.w = 90;

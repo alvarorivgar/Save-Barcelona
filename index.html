@@ -15,21 +15,29 @@
     <div id="main-menu" class="container">
       <img id="main-bg" src="./images/bg-main.jpg" alt="background">
       <button id="start-btn">Play Game</button>
+      
     </div>
     
     <!-- Game screen -->
     <canvas id="canvas" width="1300" height="900"></canvas>
     <p id="lives">Lives: <span>3</span></p>
+    
     <!-- Game over screen -->
     <div id="gameover-screen" class="container">
       <img src="./images/bg-gameover.jpg" width="1300" height="900" alt="game over screen background">
       <button id="restart-btn">Play Again?</button>
     </div>
 
+    <!-- Win screen -->
     <div id="win-screen" class="container">
       <img src="./images/bg-win.jpg" width="1300" height="900" alt="win screen background">
       <button id="restart-btn">Play Again?</button>
     </div>
+
+    <!-- Audio files -->
+    <audio id="traffic" src="./sounds/traffic-sound.wav" controls loop></audio>
+    <audio id="scream" src="./sounds/scream.wav" controls></audio>
+    <audio id="crash" src="./sounds/car-crash.wav" controls></audio>
 
   </div>
 

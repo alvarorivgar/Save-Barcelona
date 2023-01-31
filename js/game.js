@@ -6,6 +6,7 @@ class Game {
     this.vehicleArr = [];
     this.isGameOver = false;
     this.frames = 1;
+    this.level;
   }
 
   drawBg = () => {
@@ -17,33 +18,32 @@ class Game {
   };
 
   spawnVehicles = () => {
-    let randomFrequency = Math.ceil(Math.random() * 1000);
-    if (this.vehicleArr.length === 0 || this.frames % randomFrequency === 2) {
+    if (this.vehicleArr.length === 0 || this.frames % 135 === 0) {
       let greenCarTop = new Vehicle(-110, 90, 110, 60, "greenCar", 7);
       this.vehicleArr.push(greenCarTop);
     }
-    if (this.vehicleArr.length === 0 || this.frames % randomFrequency === 0) {
+    if (this.vehicleArr.length === 0 || this.frames % 60 === 0) {
       let greenCarBot = new Vehicle(-110, 705, 110, 60, "greenCar", 6);
       this.vehicleArr.push(greenCarBot);
     }
-    if (this.vehicleArr.length === 0 || this.frames % randomFrequency === 0) {
+    if (this.vehicleArr.length === 0 || this.frames % 60 === 0) {
       let whiteCarTop = new Vehicle(canvas.width, 185, 110, 60, "whiteCar", 5);
       this.vehicleArr.push(whiteCarTop);
     }
-    if (this.vehicleArr.length === 0 || this.frames % randomFrequency === 0) {
+    if (this.vehicleArr.length === 0 || this.frames % 120 === 0) {
       let whiteCarBot = new Vehicle(canvas.width, 595, 110, 60, "whiteCar", 4);
       this.vehicleArr.push(whiteCarBot);
     }
-    if (this.vehicleArr.length === 0 || this.frames % randomFrequency === 0) {
+    if (this.vehicleArr.length === 0 || this.frames % 120 === 0) {
       let truckTop = new Vehicle(-200, 270, 180, 80, "truck", 4);
       this.vehicleArr.push(truckTop);
     }
-    if (this.vehicleArr.length === 0 || this.frames % randomFrequency === 0) {
+    if (this.vehicleArr.length === 0 || this.frames % 180 === 0) {
       let truckBot = new Vehicle(-200, 480, 180, 80, "truck", 8);
       this.vehicleArr.push(truckBot);
     }
-    if (this.vehicleArr.length === 0 || this.frames % randomFrequency === 0) {
-      let bike = new Vehicle(canvas.width, 395, 75, 75, "bike", 3);
+    if (this.vehicleArr.length === 0 || this.frames % 240 === 0) {
+      let bike = new Vehicle(canvas.width, 395, 75, 75, "bike", 5);
       this.vehicleArr.push(bike);
     }
   };
@@ -66,10 +66,13 @@ class Game {
         vehicle.h + vehicle.y > this.colau.y &&
         vehicle.vehicleType !== "bike"
       ) {
-        lifeCountDOM.innerText--
-        this.colau.x = 100;
+        lifeCountDOM.innerText-- // Reduce lives by one
+        this.colau.x = 100;  // Reset to starting position
         this.colau.y = 785;
+        screamSoundDOM.play();
         if(lifeCountDOM.innerText < 1){
+          crashSoundDOM.play();
+          trafficSoundDOM.pause();
           this.gameOver();
         }
       } else if (

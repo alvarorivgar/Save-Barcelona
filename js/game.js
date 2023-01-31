@@ -1,11 +1,10 @@
 class Game {
   constructor() {
     this.bg = new Image();
-    this.bg.src = "/images/map-parallel-copia.png";
+    this.bg.src = "/images/map-parallel.png";
     this.colau = new Colau();
     this.vehicleArr = [];
     this.isGameOver = false;
-    this.hasWon = false;
     this.frames = 1;
   }
 
@@ -18,30 +17,34 @@ class Game {
   };
 
   spawnVehicles = () => {
-    if (this.vehicleArr.length === 0 || this.frames % 120 === 0) {
-      // let randomSpawn = Math.floor(Math.random() * 10);
-      //   if (this.frames % randomSpawn === 0) {
-      // Green Car
+    let randomFrequency = Math.ceil(Math.random() * 1000);
+    if (this.vehicleArr.length === 0 || this.frames % randomFrequency === 2) {
       let greenCarTop = new Vehicle(-110, 90, 110, 60, "greenCar", 7);
+      this.vehicleArr.push(greenCarTop);
+    }
+    if (this.vehicleArr.length === 0 || this.frames % randomFrequency === 0) {
       let greenCarBot = new Vehicle(-110, 705, 110, 60, "greenCar", 6);
-      // White Car
+      this.vehicleArr.push(greenCarBot);
+    }
+    if (this.vehicleArr.length === 0 || this.frames % randomFrequency === 0) {
       let whiteCarTop = new Vehicle(canvas.width, 185, 110, 60, "whiteCar", 5);
+      this.vehicleArr.push(whiteCarTop);
+    }
+    if (this.vehicleArr.length === 0 || this.frames % randomFrequency === 0) {
       let whiteCarBot = new Vehicle(canvas.width, 595, 110, 60, "whiteCar", 4);
-      // Truck
+      this.vehicleArr.push(whiteCarBot);
+    }
+    if (this.vehicleArr.length === 0 || this.frames % randomFrequency === 0) {
       let truckTop = new Vehicle(-200, 270, 180, 80, "truck", 4);
+      this.vehicleArr.push(truckTop);
+    }
+    if (this.vehicleArr.length === 0 || this.frames % randomFrequency === 0) {
       let truckBot = new Vehicle(-200, 480, 180, 80, "truck", 8);
-      // Biker
+      this.vehicleArr.push(truckBot);
+    }
+    if (this.vehicleArr.length === 0 || this.frames % randomFrequency === 0) {
       let bike = new Vehicle(canvas.width, 395, 75, 75, "bike", 3);
-      this.vehicleArr.push(
-        greenCarTop,
-        greenCarBot,
-        whiteCarTop,
-        whiteCarBot,
-        truckTop,
-        truckBot,
-        bike
-      );
-      //   }
+      this.vehicleArr.push(bike);
     }
   };
 
@@ -63,7 +66,12 @@ class Game {
         vehicle.h + vehicle.y > this.colau.y &&
         vehicle.vehicleType !== "bike"
       ) {
-        this.gameOver();
+        lifeCountDOM.innerText--
+        this.colau.x = 100;
+        this.colau.y = 785;
+        if(lifeCountDOM.innerText < 1){
+          this.gameOver();
+        }
       } else if (
         vehicle.x < this.colau.x + this.colau.w && // Bikes push Ada downward and don't end the game
         vehicle.x + vehicle.w > this.colau.x &&
@@ -79,12 +87,13 @@ class Game {
   gameOver = () => {
     this.isGameOver = true;
     canvas.style.display = "none";
+    lifeCountDOM.style.display = "none"
     gameOverScreenDOM.style.display = "block";
   };
 
   win = () => {
-    if(this.colau.y < 50){
-      this.hasWon = true;
+    if (this.colau.y < 50) {
+      this.isGameOver = true;
       canvas.style.display = "none";
       winScreenDOM.style.display = "block";
     }
@@ -117,7 +126,8 @@ class Game {
       vehicle.drawVehicle();
     });
     // Recursion & control
-
-    requestAnimationFrame(this.gameLoop);
+    if (this.isGameOver === false) {
+      requestAnimationFrame(this.gameLoop);
+    }
   };
 }

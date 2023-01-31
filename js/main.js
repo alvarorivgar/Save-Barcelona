@@ -2,6 +2,7 @@
 
 const startBtnDOM = document.querySelector("#start-btn");
 const mainMenuDOM = document.querySelector("#main-menu");
+const lifeCountDOM = document.querySelector("#lives span")
 const gameOverScreenDOM = document.querySelector("#gameover-screen");
 const winScreenDOM = document.querySelector("#win-screen")
 const canvas = document.querySelector("#canvas");
@@ -15,9 +16,9 @@ const startGame = () => {
   // 1. cambiar la pantalla
   mainMenuDOM.style.display = "none";
   canvas.style.display = "block";
+  lifeCountDOM.style.display = "block"
   // 2. crear un juego
   game = new Game();
-
   // 3. iniciar el juego
   game.gameLoop();
 };

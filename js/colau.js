@@ -20,6 +20,7 @@ class Colau {
 
   moveColauRight = () => {
     this.x += this.horizontalSpeed;
+    this.image.src = "./images/colau.png"
   };
 
   moveColauDown = () => {
@@ -28,5 +29,6 @@ class Colau {
 
   moveColauLeft = () => {
     this.x -= this.horizontalSpeed;
+    this.image.src = "./images/colau2.png"
   };
 }

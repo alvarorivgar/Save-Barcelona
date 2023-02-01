@@ -10,12 +10,12 @@ class Game {
   }
 
   drawBg = () => {
-    if(this.level === 1){
-      this.bg.src = "./images/map-gran-via.png"
-    }else if(this.level === 2){
+    if (this.level === 1) {
+      this.bg.src = "./images/map-gran-via.png";
+    } else if (this.level === 2) {
       this.bg.src = "./images/map-parallel.png";
-    }else {
-      this.bg.src = "./images/map-diagonal.png"
+    } else {
+      this.bg.src = "./images/map-diagonal.png";
     }
     ctx.drawImage(this.bg, 0, 0, canvas.width, canvas.height);
   };
@@ -25,9 +25,11 @@ class Game {
   };
 
   spawnVehicles = () => {
-    if (this.vehicleArr.length === 0 && this.level === 3) {
-      console.log("spawn tram");
-      let tram = new Vehicle(0, 395, 1000, 75, "tram", 1);
+    if (
+      (this.vehicleArr.length === 0 || this.frames % 600 === 0) &&
+      this.level === 3
+    ) {
+      let tram = new Vehicle(-1100, 395, 1000, 75, "tram", 2);
       this.vehicleArr.push(tram);
     }
     if (this.vehicleArr.length === 0 || this.frames % 135 === 0) {
@@ -58,7 +60,6 @@ class Game {
       let bike = new Vehicle(canvas.width, 395, 75, 75, "bike", 5);
       this.vehicleArr.push(bike);
     }
-    
   };
 
   removeVehicles = () => {
@@ -79,11 +80,11 @@ class Game {
         vehicle.h + vehicle.y > this.colau.y &&
         vehicle.vehicleType !== "bike"
       ) {
-        lifeCountDOM.innerText-- // Reduce lives by one
-        this.colau.x = 100;  // Reset to starting position
+        lifeCountSpanDOM.innerText--; // Reduce lives by one
+        this.colau.x = 100; // Reset to starting position
         this.colau.y = 785;
         screamSoundDOM.play();
-        if(lifeCountDOM.innerText < 1){
+        if (lifeCountSpanDOM.innerText < 1) {
           crashSoundDOM.play();
           trafficSoundDOM.pause();
           gameOverSoundDOM.play();
@@ -104,18 +105,24 @@ class Game {
   gameOver = () => {
     this.isGameOver = true;
     canvas.style.display = "none";
-    lifeCountDOM.style.display = "none"
+    lifeCountDOM.style.display = "none";
     gameOverScreenDOM.style.display = "block";
   };
 
   winCheck = () => {
-    if (this.colau.y < 50) {
+    if (this.colau.y < 50 && this.level === 3) {
       this.isGameOver = true;
       trafficSoundDOM.pause();
       winSoundDOM.play();
       canvas.style.display = "none";
+      lifeCountDOM.style.display = "none";
       winScreenDOM.style.display = "block";
-    }
+    } else if (this.colau.y < 50 && this.level === 2) {
+      this.isGameOver = true;
+      startLevelThree();
+    } else if (this.colau.y < 50 && this.level === 1) {
+    this.isGameOver = true;
+    startLevelTwo();}
   };
 
   gameLoop = () => {

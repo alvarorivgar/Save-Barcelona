@@ -4,8 +4,10 @@ const startBtnDOM = document.querySelector("#start-btn");
 const levelOneBtnDOM = document.querySelector("#level-one-btn");
 const levelTwoBtnDOM = document.querySelector("#level-two-btn");
 const levelThreeBtnDOM = document.querySelector("#level-three-btn");
+const restartBtnDOM = document.querySelector("#restart-btn");
 const mainMenuDOM = document.querySelector("#main-menu");
-const lifeCountDOM = document.querySelector("#lives span");
+const lifeCountDOM = document.querySelector("#lives");
+const lifeCountSpanDOM = document.querySelector("#lives span");
 const gameOverScreenDOM = document.querySelector("#gameover-screen");
 const winScreenDOM = document.querySelector("#win-screen");
 const trafficSoundDOM = document.querySelector("#traffic");
@@ -19,12 +21,11 @@ let game;
 screamSoundDOM.volume = 1;
 trafficSoundDOM.volume = 0.1;
 winSoundDOM.volume = 0.1;
+gameOverSoundDOM.volume = 0.4;
 
 // * STATE MANAGEMENT FUNCTIONS
 
 const startLevelOne = () => {
-  console.log("iniciando juego");
-
   // 1. cambiar la pantalla
   mainMenuDOM.style.display = "none";
   canvas.style.display = "block";
@@ -32,13 +33,12 @@ const startLevelOne = () => {
   trafficSoundDOM.play();
   // 2. crear un juego
   game = new Game();
-  game.level = 1
+  game.level = 1;
   // 3. iniciar el juego
   game.gameLoop();
 };
 
 const startLevelTwo = () => {
-  console.log("iniciando juego");
 
   // 1. cambiar la pantalla
   mainMenuDOM.style.display = "none";
@@ -47,7 +47,7 @@ const startLevelTwo = () => {
   trafficSoundDOM.play();
   // 2. crear un juego
   game = new Game();
-  game.level = 2
+  game.level = 2;
   // 3. iniciar el juego
   game.gameLoop();
 };
@@ -62,17 +62,20 @@ const startLevelThree = () => {
   trafficSoundDOM.play();
   // 2. crear un juego
   game = new Game();
-  game.level = 3
+  game.level = 3;
   // 3. iniciar el juego
   game.gameLoop();
 };
 
+
+
 // * ADD EVENT LISTENERS
 
 startBtnDOM.addEventListener("click", startLevelOne);
-levelOneBtnDOM.addEventListener("click", startLevelOne)
-levelTwoBtnDOM.addEventListener("click", startLevelTwo)
-levelThreeBtnDOM.addEventListener("click", startLevelThree)
+levelOneBtnDOM.addEventListener("click", startLevelOne);
+levelTwoBtnDOM.addEventListener("click", startLevelTwo);
+levelThreeBtnDOM.addEventListener("click", startLevelThree);
+restartBtnDOM.addEventListener("click", startLevelOne);
 window.addEventListener("keydown", (event) => {
   if (
     event.code === "ArrowUp" &&

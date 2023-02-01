@@ -91,7 +91,7 @@ class Game {
           this.gameOver();
         }
       } else if (
-        vehicle.x < this.colau.x + this.colau.w && // Bikes push Ada downward and don't end the game
+        vehicle.x < this.colau.x + this.colau.w && // Bikes push Colau downward and do not end the game
         vehicle.x + vehicle.w > this.colau.x &&
         vehicle.y < this.colau.y + this.colau.h &&
         vehicle.h + vehicle.y > this.colau.y &&
@@ -118,11 +118,14 @@ class Game {
       lifeCountDOM.style.display = "none";
       winScreenDOM.style.display = "block";
     } else if (this.colau.y < 50 && this.level === 2) {
+      tremendoSoundDOM.play();
       this.isGameOver = true;
       startLevelThree();
     } else if (this.colau.y < 50 && this.level === 1) {
-    this.isGameOver = true;
-    startLevelTwo();}
+      tremendoSoundDOM.play();
+      this.isGameOver = true;
+      startLevelTwo();
+    }
   };
 
   gameLoop = () => {

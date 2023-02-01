@@ -13,6 +13,7 @@ const winScreenDOM = document.querySelector("#win-screen");
 const trafficSoundDOM = document.querySelector("#traffic");
 const screamSoundDOM = document.querySelector("#scream");
 const crashSoundDOM = document.querySelector("#crash");
+const tremendoSoundDOM = document.querySelector("#tremendo");
 const winSoundDOM = document.querySelector("#win-sound");
 const gameOverSoundDOM = document.querySelector("#gameover-sound");
 const canvas = document.querySelector("#canvas");
@@ -21,7 +22,7 @@ let game;
 screamSoundDOM.volume = 1;
 trafficSoundDOM.volume = 0.1;
 winSoundDOM.volume = 0.1;
-gameOverSoundDOM.volume = 0.4;
+gameOverSoundDOM.volume = 0.1;
 
 // * STATE MANAGEMENT FUNCTIONS
 
@@ -39,7 +40,6 @@ const startLevelOne = () => {
 };
 
 const startLevelTwo = () => {
-
   // 1. cambiar la pantalla
   mainMenuDOM.style.display = "none";
   canvas.style.display = "block";
@@ -67,15 +67,18 @@ const startLevelThree = () => {
   game.gameLoop();
 };
 
-
-
 // * ADD EVENT LISTENERS
 
 startBtnDOM.addEventListener("click", startLevelOne);
 levelOneBtnDOM.addEventListener("click", startLevelOne);
 levelTwoBtnDOM.addEventListener("click", startLevelTwo);
 levelThreeBtnDOM.addEventListener("click", startLevelThree);
-restartBtnDOM.addEventListener("click", startLevelOne);
+restartBtnDOM.addEventListener("click", () => {
+  lifeCountSpanDOM.innerText = 3;
+  gameOverScreenDOM.style.display = "none";
+  winScreenDOM.style.display = "none";
+  startLevelOne();
+});
 window.addEventListener("keydown", (event) => {
   if (
     event.code === "ArrowUp" &&

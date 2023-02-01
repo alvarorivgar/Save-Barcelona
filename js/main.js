@@ -1,6 +1,9 @@
 // * GLOBAL VARIABLES
 
 const startBtnDOM = document.querySelector("#start-btn");
+const levelOneBtnDOM = document.querySelector("#level-one-btn");
+const levelTwoBtnDOM = document.querySelector("#level-two-btn");
+const levelThreeBtnDOM = document.querySelector("#level-three-btn");
 const mainMenuDOM = document.querySelector("#main-menu");
 const lifeCountDOM = document.querySelector("#lives span");
 const gameOverScreenDOM = document.querySelector("#gameover-screen");
@@ -8,14 +11,18 @@ const winScreenDOM = document.querySelector("#win-screen");
 const trafficSoundDOM = document.querySelector("#traffic");
 const screamSoundDOM = document.querySelector("#scream");
 const crashSoundDOM = document.querySelector("#crash");
+const winSoundDOM = document.querySelector("#win-sound");
+const gameOverSoundDOM = document.querySelector("#gameover-sound");
 const canvas = document.querySelector("#canvas");
 const ctx = canvas.getContext("2d");
 let game;
 screamSoundDOM.volume = 1;
 trafficSoundDOM.volume = 0.1;
+winSoundDOM.volume = 0.1;
 
 // * STATE MANAGEMENT FUNCTIONS
-const startGame = () => {
+
+const startLevelOne = () => {
   console.log("iniciando juego");
 
   // 1. cambiar la pantalla
@@ -25,14 +32,47 @@ const startGame = () => {
   trafficSoundDOM.play();
   // 2. crear un juego
   game = new Game();
-  // game.level = ? Añadir if para spawnear bici o tram
+  game.level = 1
+  // 3. iniciar el juego
+  game.gameLoop();
+};
+
+const startLevelTwo = () => {
+  console.log("iniciando juego");
+
+  // 1. cambiar la pantalla
+  mainMenuDOM.style.display = "none";
+  canvas.style.display = "block";
+  lifeCountDOM.style.display = "block";
+  trafficSoundDOM.play();
+  // 2. crear un juego
+  game = new Game();
+  game.level = 2
+  // 3. iniciar el juego
+  game.gameLoop();
+};
+
+const startLevelThree = () => {
+  console.log("iniciando juego");
+
+  // 1. cambiar la pantalla
+  mainMenuDOM.style.display = "none";
+  canvas.style.display = "block";
+  lifeCountDOM.style.display = "block";
+  trafficSoundDOM.play();
+  // 2. crear un juego
+  game = new Game();
+  game.level = 3
   // 3. iniciar el juego
   game.gameLoop();
 };
 
 // * ADD EVENT LISTENERS
 
-startBtnDOM.addEventListener("click", startGame);
+startBtnDOM.addEventListener("click", startLevelOne);
+levelOneBtnDOM.addEventListener("click", startLevelOne)
+levelTwoBtnDOM.addEventListener("click", startLevelTwo)
+levelThreeBtnDOM.addEventListener("click", startLevelThree)
 window.addEventListener("keydown", (event) => {
   if (
     event.code === "ArrowUp" &&

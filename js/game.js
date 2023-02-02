@@ -26,7 +26,7 @@ class Game {
 
   spawnVehicles = () => {
     if (
-      (this.vehicleArr.length === 0 || this.frames % 600 === 0) &&
+      (this.vehicleArr.length === 1 || this.frames % 600 === 0) &&
       this.level === 3
     ) {
       let tram = new Vehicle(-1100, 395, 1000, 75, "tram", 2);
@@ -86,8 +86,6 @@ class Game {
         screamSoundDOM.play();
         if (lifeCountSpanDOM.innerText < 1) {
           crashSoundDOM.play();
-          trafficSoundDOM.pause();
-          gameOverSoundDOM.play();
           this.gameOver();
         }
       } else if (
@@ -104,10 +102,11 @@ class Game {
 
   gameOver = () => {
     this.isGameOver = true;
+    trafficSoundDOM.pause();
     canvas.style.display = "none";
     lifeCountDOM.style.display = "none";
     gameOverScreenDOM.style.display = "block";
-    restartBtnDOM.style.display = "block"
+    restartBtnDOM.style.display = "block";
   };
 
   winCheck = () => {
@@ -118,7 +117,7 @@ class Game {
       canvas.style.display = "none";
       lifeCountDOM.style.display = "none";
       winScreenDOM.style.display = "block";
-      restartBtnDOM.style.display = "block"
+      restartBtnDOM.style.display = "block";
     } else if (this.colau.y < 50 && this.level === 2) {
       tremendoSoundDOM.play();
       this.isGameOver = true;

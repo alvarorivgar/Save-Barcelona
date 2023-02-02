@@ -15,14 +15,12 @@ const screamSoundDOM = document.querySelector("#scream");
 const crashSoundDOM = document.querySelector("#crash");
 const tremendoSoundDOM = document.querySelector("#tremendo");
 const winSoundDOM = document.querySelector("#win-sound");
-const gameOverSoundDOM = document.querySelector("#gameover-sound");
 const canvas = document.querySelector("#canvas");
 const ctx = canvas.getContext("2d");
 let game;
 screamSoundDOM.volume = 1;
 trafficSoundDOM.volume = 0.1;
 winSoundDOM.volume = 0.1;
-gameOverSoundDOM.volume = 0.1;
 
 // * STATE MANAGEMENT FUNCTIONS
 

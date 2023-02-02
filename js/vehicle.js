@@ -31,9 +31,9 @@ class Vehicle {
 
   moveLeft = () => {
     this.x -= this.speed;
-  }
+  };
 
   moveRight = () => {
     this.x += this.speed;
-  }
+  };
 }

@@ -14,7 +14,6 @@
 }
 
 body {
-  /* background-image: url(./images/rajola.png); */
   background-color: lightsteelblue;
   margin: 0;
 }
@@ -55,14 +54,14 @@ button {
 }
 
 #restart-btn {
-    font-family: Segoe Print;
+  font-family: Segoe Print;
   background-color: red;
   color: black;
   font-weight: bolder;
   padding: 5px;
   border-radius: 10px;
   font-size: large;
-  border: 2px solid black
+  border: 2px solid black;
 }
 
 p {
@@ -70,11 +69,6 @@ p {
   color: #214b8e;
   font-weight: bold;
   font-size: large;
-  
-}
-
-canvas {
-    box-shadow: 10px #214b8e;
 }
 
 #gameover-screen {

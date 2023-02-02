@@ -29,8 +29,12 @@ gameOverSoundDOM.volume = 0.1;
 const startLevelOne = () => {
   // 1. cambiar la pantalla
   mainMenuDOM.style.display = "none";
+  startBtnDOM.style.display = "none";
+  gameOverScreenDOM.style.display = "none";
+  winScreenDOM.style.display = "none";
+  lifeCountSpanDOM.innerText = 3;
   canvas.style.display = "block";
-  lifeCountDOM.style.display = "block";
+  lifeCountDOM.style.display = "flex";
   trafficSoundDOM.play();
   // 2. crear un juego
   game = new Game();
@@ -42,6 +46,10 @@ const startLevelOne = () => {
 const startLevelTwo = () => {
   // 1. cambiar la pantalla
   mainMenuDOM.style.display = "none";
+  startBtnDOM.style.display = "none";
+  gameOverScreenDOM.style.display = "none";
+  winScreenDOM.style.display = "none";
+  lifeCountSpanDOM.innerText = 3;
   canvas.style.display = "block";
   lifeCountDOM.style.display = "block";
   trafficSoundDOM.play();
@@ -57,8 +65,12 @@ const startLevelThree = () => {
 
   // 1. cambiar la pantalla
   mainMenuDOM.style.display = "none";
+  startBtnDOM.style.display = "none";
+  gameOverScreenDOM.style.display = "none";
+  winScreenDOM.style.display = "none";
+  lifeCountSpanDOM.innerText = 3;
   canvas.style.display = "block";
-  lifeCountDOM.style.display = "block";
+  lifeCountDOM.style.display = "flex";
   trafficSoundDOM.play();
   // 2. crear un juego
   game = new Game();
@@ -74,9 +86,7 @@ levelOneBtnDOM.addEventListener("click", startLevelOne);
 levelTwoBtnDOM.addEventListener("click", startLevelTwo);
 levelThreeBtnDOM.addEventListener("click", startLevelThree);
 restartBtnDOM.addEventListener("click", () => {
-  lifeCountSpanDOM.innerText = 3;
-  gameOverScreenDOM.style.display = "none";
-  winScreenDOM.style.display = "none";
+  restartBtnDOM.style.display = "none";
   startLevelOne();
 });
 window.addEventListener("keydown", (event) => {

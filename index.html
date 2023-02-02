@@ -1,55 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Save Barcelona</title>
-  <link rel="stylesheet" href="./style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Save Barcelona</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="grid-container">
 
-  <div class="container">
+      <!-- Main menu -->
+      <div id="level-select">
+        <nav>
+          <div>
+            <button id="start-btn">Jugar</button>
+            <br>
+            <br>
+          </div>
+          <div>
+            <p>Selección de nivel:</p>
+            <button id="level-one-btn">Nivel 1: Gran Vía</button>
+          </div>
+          <div>
+            <button id="level-two-btn">Nivel 2: Paral·lel</button>
+          </div>
+          <div>
+            <button id="level-three-btn">Nivel 3: Diagonal</button>
+          </div>
+          <div>
+            <br>
+            <br>
+            <button id="restart-btn">Jugar otra vez</button>
+          </div>
+        </nav>
+      </div>
+      <div id="main-menu" class="container">
+        <img id="main-bg" src="./images/bg-main.jpg" alt="background" />
+      </div>
 
-    <!-- Main menu -->
-    <div id="main-menu" class="container">
-      <img id="main-bg" src="./images/bg-main.jpg" alt="background">
-      <button id="start-btn">Play Game</button>
-      <button id="level-one-btn">Nivel 1: Gran Vía</button>
-      <button id="level-two-btn">Nivel 2: Paral·lel</button>
-      <button id="level-three-btn">Nivel 3: Diagonal</button>
-      
+      <!-- Game screen -->
+      <div class="container">
+        <p id="lives">Vidas: <span>3</span></p>
+        <canvas id="canvas" width="1300" height="900"></canvas>
+      </div>
+
+      <!-- Game over screen -->
+      <div id="gameover-screen" class="container">
+        <img
+          src="./images/bg-gameover.jpg"
+          width="1300"
+          height="900"
+          alt="game over screen background"
+        />
+      </div>
+
+      <!-- Win screen -->
+      <div id="win-screen" class="container">
+        <img
+          src="./images/bg-win.jpg"
+          width="1300"
+          height="900"
+          alt="win screen background"
+        />
+      </div>
+
+      <!-- Audio files -->
+      <audio
+        id="traffic"
+        src="./sounds/traffic-sound.wav"
+        controls
+        loop
+      ></audio>
+      <audio id="scream" src="./sounds/scream.wav" controls></audio>
+      <audio id="crash" src="./sounds/car-crash.wav" controls></audio>
+      <audio id="win-sound" src="./sounds/win-sound.wav" controls></audio>
+      <audio
+        id="gameover-sound"
+        src="./sounds/gameover-sound.wav"
+        controls
+      ></audio>
+      <audio id="tremendo" src="./sounds/tremendo.mp3" controls></audio>
+
+      <script src="./js/main.js"></script>
+      <script src="./js/game.js"></script>
+      <script src="./js/colau.js"></script>
+      <script src="./js/vehicle.js"></script>
     </div>
-    
-    <!-- Game screen -->
-    <canvas id="canvas" width="1300" height="900"></canvas>
-    <p id="lives">Lives: <span>3</span></p>
-    
-    <!-- Game over screen -->
-    <div id="gameover-screen" class="container">
-      <img src="./images/bg-gameover.jpg" width="1300" height="900" alt="game over screen background">
-      <button id="restart-btn">Play Again?</button>
-    </div>
-
-    <!-- Win screen -->
-    <div id="win-screen" class="container">
-      <img src="./images/bg-win.jpg" width="1300" height="900" alt="win screen background">
-      <button id="restart-btn">Play Again?</button>
-    </div>
-
-    <!-- Audio files -->
-    <audio id="traffic" src="./sounds/traffic-sound.wav" controls loop></audio>
-    <audio id="scream" src="./sounds/scream.wav" controls></audio>
-    <audio id="crash" src="./sounds/car-crash.wav" controls></audio>
-    <audio id="win-sound" src="./sounds/win-sound.wav" controls></audio>
-    <audio id="gameover-sound" src="./sounds/gameover-sound.wav" controls></audio>
-    <audio id="tremendo" src="./sounds/tremendo.mp3" controls></audio>
-
-  </div>
-
-  <script src="./js/main.js"></script>
-  <script src="./js/game.js"></script>
-  <script src="./js/colau.js"></script>
-  <script src="./js/vehicle.js"></script>
-</body>
+  </body>
 </html>

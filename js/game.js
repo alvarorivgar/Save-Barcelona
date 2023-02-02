@@ -107,6 +107,7 @@ class Game {
     canvas.style.display = "none";
     lifeCountDOM.style.display = "none";
     gameOverScreenDOM.style.display = "block";
+    restartBtnDOM.style.display = "block"
   };
 
   winCheck = () => {
@@ -117,6 +118,7 @@ class Game {
       canvas.style.display = "none";
       lifeCountDOM.style.display = "none";
       winScreenDOM.style.display = "block";
+      restartBtnDOM.style.display = "block"
     } else if (this.colau.y < 50 && this.level === 2) {
       tremendoSoundDOM.play();
       this.isGameOver = true;

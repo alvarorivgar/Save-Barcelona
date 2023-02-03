@@ -15,6 +15,7 @@ Save Barcelona is a Frogger-like game where the player controls Ada Colau and ha
 - Special enemy in level two has a different behaviour.
 - The ending of the level can only be accessed from below, preventing using the final lane as a safe spot.
 - Getting hit by a vehicle moves Colau to the starting position.
+- Level select option.
 
 # Backlog Functionalities
 

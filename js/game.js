@@ -148,7 +148,7 @@ class Game {
       }
     });
     this.removeVehicles();
-    this.vehicleColission();
+    this.vehicleCollision();
     this.winCheck();
 
     // Element drawing

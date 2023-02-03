@@ -71,7 +71,7 @@ class Game {
     }
   };
 
-  vehicleColission = () => {
+  vehicleCollision = () => {
     this.vehicleArr.forEach((vehicle) => {
       if (
         vehicle.x < this.colau.x + this.colau.w &&
@@ -80,8 +80,8 @@ class Game {
         vehicle.h + vehicle.y > this.colau.y &&
         vehicle.vehicleType !== "bike"
       ) {
-        lifeCountSpanDOM.innerText--; // Reduce lives by one
-        this.colau.x = 100; // Reset to starting position
+        lifeCountSpanDOM.innerText--;
+        this.colau.x = 100; 
         this.colau.y = 785;
         screamSoundDOM.play();
         if (lifeCountSpanDOM.innerText < 1) {
@@ -131,8 +131,10 @@ class Game {
 
   gameLoop = () => {
     this.frames++;
+
     // Clear canvas
     this.clearCanvas();
+
     // Movement & actions
     this.spawnVehicles();
     this.vehicleArr.forEach((vehicle) => {
@@ -155,6 +157,7 @@ class Game {
     this.vehicleArr.forEach((vehicle) => {
       vehicle.drawVehicle();
     });
+    
     // Recursion & control
     if (this.isGameOver === false) {
       requestAnimationFrame(this.gameLoop);

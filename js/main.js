@@ -25,7 +25,7 @@ winSoundDOM.volume = 0.1;
 // * STATE MANAGEMENT FUNCTIONS
 
 const startLevelOne = () => {
-  // 1. cambiar la pantalla
+ 
   mainMenuDOM.style.display = "none";
   startBtnDOM.style.display = "none";
   gameOverScreenDOM.style.display = "none";
@@ -34,15 +34,14 @@ const startLevelOne = () => {
   canvas.style.display = "block";
   lifeCountDOM.style.display = "flex";
   trafficSoundDOM.play();
-  // 2. crear un juego
+
   game = new Game();
   game.level = 1;
-  // 3. iniciar el juego
+
   game.gameLoop();
 };
 
 const startLevelTwo = () => {
-  // 1. cambiar la pantalla
   mainMenuDOM.style.display = "none";
   startBtnDOM.style.display = "none";
   gameOverScreenDOM.style.display = "none";
@@ -51,17 +50,14 @@ const startLevelTwo = () => {
   canvas.style.display = "block";
   lifeCountDOM.style.display = "block";
   trafficSoundDOM.play();
-  // 2. crear un juego
+
   game = new Game();
   game.level = 2;
-  // 3. iniciar el juego
+
   game.gameLoop();
 };
 
 const startLevelThree = () => {
-  console.log("iniciando juego");
-
-  // 1. cambiar la pantalla
   mainMenuDOM.style.display = "none";
   startBtnDOM.style.display = "none";
   gameOverScreenDOM.style.display = "none";
@@ -70,10 +66,10 @@ const startLevelThree = () => {
   canvas.style.display = "block";
   lifeCountDOM.style.display = "flex";
   trafficSoundDOM.play();
-  // 2. crear un juego
+
   game = new Game();
   game.level = 3;
-  // 3. iniciar el juego
+  
   game.gameLoop();
 };
 
